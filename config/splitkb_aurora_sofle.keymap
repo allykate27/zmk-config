@@ -67,10 +67,10 @@
 // | SHIFT |  Z  |  X  |  C   |  V   |  B   |   C_MUTE  |  |  C_AL_COFFEE  |  N   |  M    |  ;    |  .   |   =   | | |
 //               |CTRL | ALT  | GUI  |  -   |  ENTER |  | SPACE | BSPC | LOWER  | LBKT   | RBKT |
             bindings = <
-&settings_reset    &kp N1 &kp N2    &kp N3   &kp N4   &kp N5                     &kp N6 &kp N7   &kp N8    &kp N9   &kp N0   &kp DEL
-&kp GRAVE  &kp Q  &kp W     &kp E    &kp R    &kp T                      &kp Y  &kp U    &kp I     &kp O    &kp P    &kp APOS
+&kp ESC    &kp N1 &kp N2    &kp N3   &kp N4   &kp N5                     &kp N6 &kp N7   &kp N8    &kp N9   &kp N0   &kp DEL
+&kp GRAVE  &as LS(Q) Q  &as LS(W) W  &as LS(E) E  &as LS(R) R  &as LS(T) T  &as LS(Y) Y  &as LS(U) U  &as LS(I) I  &as LS(O) O  &as LS(P) P  &kp APOS
 &kp TAB &as LS(A) A  &as LS(S) S  &as LS(D) D  &as LS(F) F  &as LS(G) G  &as LS(H) H  &as LS(J) J  &as LS(K) K  &as LS(L) L  &kp DOT &kp COMMA
-&kp LSHFT &kp Z  &kp X     &kp C    &kp V    &kp B  &kp C_MUTE   &kp C_AL_COFFEE &kp N  &kp M    &kp SEMI &kp EQUAL  &kp FSLH &kp NUBS
+&kp LSHFT &as LS(Z) Z  &as LS(X) X  &as LS(C) C  &as LS(V) V  &as LS(B) B  &kp C_MUTE   &kp C_AL_COFFEE &as LS(N) N  &as LS(M) M  &kp SEMI &kp EQUAL  &kp FSLH &kp NUBS
 &kp LCTRL &kp LALT &kp LGUI &kp MINUS  &kp RET  &kp SPACE  &kp BSPC  &mo 1 &kp LBKT  &kp RBKT             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
