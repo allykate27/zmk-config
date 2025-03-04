@@ -18,6 +18,44 @@
  */
 
 / {
+    // Define macros here
+    macros {
+        screenshot: screenshot {
+            label = "screenshot";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LGUI &kp LSHFT>
+                , <&macro_tap &kp S>
+                , <&macro_release &kp LSHFT &kp LGUI>
+                ;
+        };
+        
+        // Example of another macro for Command+Space (Spotlight)
+        spotlight: spotlight {
+            label = "spotlight";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LGUI>
+                , <&macro_tap &kp SPACE>
+                , <&macro_release &kp LGUI>
+                ;
+        };
+    };
+    
+    // Define custom behaviors here
+    behaviors {
+        as: auto_shift {
+            compatible = "zmk,behavior-hold-tap";
+            label = "AUTO_SHIFT";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+    };
     keymap {
         compatible = "zmk,keymap";
 
@@ -29,11 +67,11 @@
 // | SHIFT |  Z  |  X  |  C   |  V   |  B   |   C_MUTE  |  |  C_AL_COFFEE  |  N   |  M    |  ;    |  .   |   =   | | |
 //               |CTRL | ALT  | GUI  |  -   |  ENTER |  | SPACE | BSPC | LOWER  | LBKT   | RBKT |
             bindings = <
-&kp ESC   &kp N1 &kp N2    &kp N3   &kp N4   &kp N5                     &kp N6 &kp N7   &kp N8    &kp N9   &kp N0   &kp DEL
+&settings_reset    &kp N1 &kp N2    &kp N3   &kp N4   &kp N5                     &kp N6 &kp N7   &kp N8    &kp N9   &kp N0   &kp DEL
 &kp GRAVE  &kp Q  &kp W     &kp E    &kp R    &kp T                      &kp Y  &kp U    &kp I     &kp O    &kp P    &kp APOS
-&kp TAB &kp A  &kp S     &kp D    &kp F    &kp G                      &kp H  &kp J    &kp K     &kp L    &kp DOT &kp COMMA
+&kp TAB &as LS(A) A  &as LS(S) S  &as LS(D) D  &as LS(F) F  &as LS(G) G  &as LS(H) H  &as LS(J) J  &as LS(K) K  &as LS(L) L  &kp DOT &kp COMMA
 &kp LSHFT &kp Z  &kp X     &kp C    &kp V    &kp B  &kp C_MUTE   &kp C_AL_COFFEE &kp N  &kp M    &kp SEMI &kp EQUAL  &kp FSLH &kp NUBS
-&kp LCTRL &kp LALT &kp LGUI &kp MINUS  &kp RET  &kp SPACE  &kp BSPC  &mo 1 &kp LBKT  &kp RBKT            >;
+&kp LCTRL &kp LALT &kp LGUI &kp MINUS  &kp RET  &kp SPACE  &kp BSPC  &mo 1 &kp LBKT  &kp RBKT             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
@@ -48,7 +86,7 @@
             bindings = <
 &studio_unlock &bt BT_SEL 0     &bt BT_SEL 1      &bt BT_SEL 2      &bt BT_SEL 3 &bt BT_SEL 4                 &trans    &trans    &trans    &trans    &trans    &studio_unlock
 &kp F1     &kp QMARK           &kp F3            &kp ESC            &kp F5       &kp F6                       &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
-&kp GRAVE  &kp AMPS         &kp STAR            &kp DOLLAR          &kp DOLLAR   &kp PRCNT                    &kp CARET &kp AMPS  &kp STAR  &kp LPAR  &kp RPAR  &kp TILDE
+&kp GRAVE  &kp AMPS         &screenshot           &kp DOLLAR          &kp DOLLAR   &kp PRCNT                    &kp CARET &kp AMPS  &kp STAR  &kp LPAR  &kp RPAR  &kp TILDE
 &trans     &ext_power EP_ON &ext_power EP_OFF &ext_power EP_TOG &trans       &trans    &trans   &trans    &trans    &kp MINUS &kp PLUS  &kp LBRC  &kp RBRC  &kp PIPE
                             &trans            &trans            &trans       &trans    &trans   &trans    &trans    &trans    &trans    &trans
             >;
