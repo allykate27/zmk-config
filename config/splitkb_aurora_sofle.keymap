@@ -16,7 +16,9 @@
     // chain-length = <29>; // Uncomment if using only per-key LEDs.
 };
  */
-
+#define DEFAULT 0
+#define LOWER   1
+#define RAISE   2
 / {
     // Define macros here
     macros {
@@ -71,7 +73,7 @@
 &kp GRAVE  &as LS(Q) Q  &as LS(W) W  &as LS(E) E  &as LS(R) R  &as LS(T) T  &as LS(Y) Y  &as LS(U) U  &as LS(I) I  &as LS(O) O  &as LS(P) P  &kp APOS
 &kp TAB &as LS(A) A  &as LS(S) S  &as LS(D) D  &as LS(F) F  &as LS(G) G  &as LS(H) H  &as LS(J) J  &as LS(K) K  &as LS(L) L  &kp DOT &kp COMMA
 &kp LSHFT &as LS(Z) Z  &as LS(X) X  &as LS(C) C  &as LS(V) V  &as LS(B) B  &kp C_MUTE   &kp C_AL_COFFEE &as LS(N) N  &as LS(M) M  &kp SEMI &kp EQUAL  &kp FSLH &kp NUBS
-&bt BT_CLR_ALL &kp LALT &kp LGUI &kp MINUS  &kp RET  &kp SPACE  &kp BSPC  &mo 1 &kp LBKT  &kp RBKT             >;
+&kp LCTRL &kp LALT &kp LGUI &kp MINUS  &kp RET  &kp SPACE  &kp BSPC  &mo 1 &kp LBKT  &kp RBKT             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
@@ -84,14 +86,14 @@
 // |       |     |     |      |      |      |        |  |       |      |  _    |  +    |  {   |   }   |  "|"  |
 //               |     |      |      |      |        |  |       |      |       |       |      |
             bindings = <
-&studio_unlock &bt BT_SEL 0     &bt BT_SEL 1      &bt BT_SEL 2      &bt BT_SEL 3 &bt BT_SEL 4                 &trans    &trans    &trans    &trans    &trans    &studio_unlock
-&kp F1     &kp QMARK           &kp F3            &kp ESC            &kp F5       &kp F6                       &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
-&kp GRAVE  &kp AMPS         &screenshot           &kp DOLLAR          &kp DOLLAR   &kp PRCNT                    &kp CARET &kp AMPS  &kp STAR  &kp LPAR  &kp RPAR  &kp TILDE
+&studio_unlock &bt BT_SEL 0     &bt BT_SEL 1      &bt BT_SEL 2      &bt BT_SEL 3 &kp K_SCREENSAVER                &trans    &trans    &trans    &trans    &trans    &studio_unlock
+&kp F1     &kp QMARK           &kp UP            &kp ESC            &kp F5       &kp F6                       &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
+&kp GRAVE  &kp LEFT         & DOWN           &kp RIGHT          &kp DOLLAR   &kp PRCNT                    &kp CARET &kp AMPS  &kp STAR  &kp LPAR  &kp RPAR  &kp TILDE
 &trans     &ext_power EP_ON &ext_power EP_OFF &ext_power EP_TOG &trans       &trans    &trans   &trans    &trans    &kp MINUS &kp PLUS  &kp LBRC  &kp RBRC  &kp PIPE
                             &bt BT_CLR_ALL           &bt BT_NXT            &trans       &trans    &trans   &trans    &trans    &trans    &trans    &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_AC_SCROLL_UP C_AC_SCROLL_DOWN &inc_dec_kp C_AC_ZOOM_OUT C_AC_ZOOM_IN>;
 
         };
 
